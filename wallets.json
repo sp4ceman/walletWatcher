@@ -1,8 +1,0 @@
-[
-    {
-        "name": "YOUR WALLET NAME",
-        "forexOutAmt": 0,
-        "krakenPublicKey": "YOUR PUBLIC KRAKEN KEY",
-        "krakenSecretKey": "YOUR SECRET KRAKEN KEY"
-    }
-]

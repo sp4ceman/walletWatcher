@@ -43,7 +43,7 @@ var parseTradeInfo = function (results) {
 };
 
 var displayTradeInfo = function (objTradeInfo) {
-    console.clear();
+    //console.clear();
     console.log('kraken price (EUR)  :::: ' + objTradeInfo.krakenPrice);
     console.log('luno price (ZAR)    :::: ' + objTradeInfo.lunoPrice);
     console.log('-------------------------------');

@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "bitx": "^1.5.1",
-    "kraken-api-wrapper": "^0.1.1"
+    "kraken-api-wrapper": "^0.1.1",
+    "node-binance-api": "^0.3.0"
   }
 }

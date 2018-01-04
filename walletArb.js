@@ -1,5 +1,6 @@
 var krakenQueries = require('./src/krakenQueries')
 var lunoQueries = require('./src/lunoQueries');
+var binanceQueries = require('./src/binanceQueries');
 var tradeInfo = require('./src/tradeInfo');
 var fs = require('fs');
 
@@ -32,6 +33,7 @@ var _buildRequestPromiseChain = function (_walletsToProcess) {
 
 var main = function () {
     _buildRequestPromiseChain(walletsArray);
+
 }
 
 main();
