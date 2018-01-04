@@ -4,10 +4,11 @@ const EXCHANGE_NAME = 'kraken';
 
 
 var exchange_constants = {
-    KRAKEN_EURO_BALANCE_CODE: 'ZEUR',
     KRAKEN_PAIR_CODE: 'BTCEUR',
     KRAKEN_REPONSE_PAIR_CODE: 'XXBTZEUR',
-    BITCOIN_CURR_CODE: 'XXBT'
+    EURO_CURR_CODE: 'ZEUR',
+    BITCOIN_CURR_CODE: 'XXBT',
+    ETHEREUM_CURR_CODE: 'XETH'
 };
 
 
@@ -28,7 +29,7 @@ var getTickerPromise = function () {
 
 var _parseKrakenBalanceForWallet = function (result, wallet) {
 
-    var _balance = result[exchange_constants.KRAKEN_EURO_BALANCE_CODE];
+    var _balance = result[exchange_constants.EURO_CURR_CODE];
 
     return {
         balance: _balance,
@@ -43,27 +44,20 @@ var _parseKrakenBalance = function (result, wallet) {
         balanceArr: new Array()
     };
 
-    var balanceArr = [
-        {
-            krkCode: exchange_constants.KRAKEN_EURO_BALANCE_CODE,
-            key: constants.codes.EURO
-        },
+    var codeTranslate = [];
+    codeTranslate[exchange_constants.EURO_CURR_CODE] = constants.codes.EURO;
+    codeTranslate[exchange_constants.BITCOIN_CURR_CODE] = constants.codes.BITCOIN;
+    codeTranslate[exchange_constants.ETHEREUM_CURR_CODE] = constants.codes.ETHEREUM;
 
-        {
-            krkCode: exchange_constants.BITCOIN_CURR_CODE,
-            key: constants.codes.BITCOIN
-        }
-    ];
+    for (let index = 0; index < Object.keys(result).length; index++) {
+        var key = Object.keys(result)[index];
 
-    for (let index = 0; index < balanceArr.length; index++) {
-        var element = balanceArr[index];
+        var element = result[key];
 
         var singleBalanceObj = {
-            key: element.key,
-            balance: result[element.krkCode]
+            key: codeTranslate[key],
+            balance: element
         };
-
-        console.log(singleBalanceObj);
 
         balanceObj.balanceArr.push(singleBalanceObj);
     };
