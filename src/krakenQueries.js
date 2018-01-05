@@ -11,6 +11,9 @@ var exchange_constants = {
     ETHEREUM_CURR_CODE: 'XETH'
 };
 
+var _errorHandler = function (error) {
+    console.log(error);
+};
 
 var _parseTickerLastTrade = function (result, name) {
 
@@ -66,11 +69,6 @@ var _parseKrakenBalance = function (result, wallet) {
 
 };
 
-
-var _errorHandler = function (error) {
-
-};
-
 var getWalletPromise = function (_wallet) {
     // Get tradable balances  
     kraken.setPublicKey(_wallet.krakenPublicKey);
@@ -98,9 +96,30 @@ var getBalancePromise = function (_wallet) {
     return requestPromise;
 };
 
+function getTradeHistoryPromise(_wallet) {
+    kraken.setPublicKey(_wallet.krakenPublicKey);
+    kraken.setSecreteKey(_wallet.krakenSecretKey);
+
+    kraken.setRequestTime(5000)
+    var requestPromise = kraken.TradesHistory();
+    return requestPromise;
+};
+
+function getWithdrawalHistoryPromise(_wallet, code) {
+    kraken.setPublicKey(_wallet.krakenPublicKey);
+    kraken.setSecreteKey(_wallet.krakenSecretKey);
+
+    kraken.setRequestTime(5000)
+    var requestPromise = kraken.WithdrawStatus({ asset: code });
+    return requestPromise;
+}
+
 
 module.exports = {
     getTickerPromise,
     getWalletPromise,
-    getBalancePromise
+    getBalancePromise,
+    getTradeHistoryPromise,
+    getWithdrawalHistoryPromise,
+
 };
