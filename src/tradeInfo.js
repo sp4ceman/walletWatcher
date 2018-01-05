@@ -1,3 +1,5 @@
+var constants = require('./constants');
+
 var parseTradeInfo = function (results) {
 
     var lunoPrice = results[0];
@@ -15,7 +17,8 @@ var parseTradeInfo = function (results) {
         var element = results[index];
         var krakenBalance = element.balance;
         var amountOfCoin = element.balance / krakenPrice;
-        var lunoSale = amountOfCoin * lunoPrice;
+        var amountAfterTransfer = amountOfCoin - constants.KRAKEN_WITHDRAW_FEE;
+        var lunoSale = amountAfterTransfer * lunoPrice;
         var wallet = element.wallet;
         var forexOutAmt = 0;
         var lunoProfit = 0;

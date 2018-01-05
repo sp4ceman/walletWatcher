@@ -7,9 +7,11 @@ var constants = {
         RIPPLE: 'XRP',
         STELLAR: 'XLM',
         ETHEREUM: 'ETH',
+        NAMECOIN : 'NMC'
 
 
     },
+    KRAKEN_WITHDRAW_FEE: 0.00100
 };
 
 module.exports = constants;

@@ -1,6 +1,6 @@
-var krakenQueries = require('./src/krakenQueries')
-var lunoQueries = require('./src/lunoQueries');
-var binanceQueries = require('./src/binanceQueries');
+var krakenQueries = require('./src/exchanges/krakenQueries')
+var lunoQueries = require('./src/exchanges/lunoQueries');
+var binanceQueries = require('./src/exchanges/binanceQueries');
 var tradeInfo = require('./src/tradeInfo');
 var fs = require('fs');
 
