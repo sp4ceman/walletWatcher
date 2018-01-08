@@ -2,6 +2,7 @@ var krakenQueries = require('./src/krakenQueries')
 var lunoQueries = require('./src/lunoQueries');
 var binanceQueries = require('./src/binanceQueries');
 var tradeInfo = require('./src/tradeInfo');
+var rates = require('./src/ratesQueries');
 var fs = require('fs');
 
 
@@ -22,7 +23,10 @@ var _buildRequestPromiseChain = function (_walletsToProcess) {
     //then the kraken price ticker
     var getTickerInfoPromise = krakenQueries.getTickerPromise();
     promiseArray.push(getTickerInfoPromise);
-    //then after those 2 comes each of the wallets on kraken
+    //then the exchange rate
+    var getExchangeRatePromise = rates.getRandEuroRatePromise();
+    promiseArray.push(getExchangeRatePromise);
+    //then after those 3 comes each of the wallets on kraken
     for (let index = 0; index < _walletsToProcess.length; index++) {
         var _wallet = _walletsToProcess[index];
         promiseArray.push(krakenQueries.getWalletPromise(_wallet));
@@ -33,7 +37,7 @@ var _buildRequestPromiseChain = function (_walletsToProcess) {
 
 var main = function () {
     _buildRequestPromiseChain(walletsArray);
-
+    
 }
 
 main();

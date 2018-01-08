@@ -20,8 +20,8 @@ var _buildRequestPromiseChain = function (_walletsToProcess) {
     var promiseArray = new Array();
     for (let index = 0; index < _walletsToProcess.length; index++) {
         var _wallet = _walletsToProcess[index];
-        //promiseArray.push(binanceQueries.getBalancePromise(_wallet));
-        //promiseArray.push(krakenQueries.getBalancePromise(_wallet));
+        promiseArray.push(binanceQueries.getBalancePromise(_wallet));
+        promiseArray.push(krakenQueries.getBalancePromise(_wallet));
         promiseArray.push(lunoQueries.getBalancePromise(_wallet));
     }
 
