@@ -1,4 +1,5 @@
 
+var constants = require('./constants');
 
 var _buildTestTransaction = function (results) {
 
@@ -69,6 +70,7 @@ var parseTradeInfo = function (results) {
     //SKIP TO 3 - arr holds luno & kraken & rates in front
     for (let index = 3; index < results.length; index++) {
         var element = results[index];
+
         var _walletInfoObj = _buildSingleTransaction(element, results);
         returnObj.walletInfo.push(_walletInfoObj);
     };

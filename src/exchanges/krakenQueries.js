@@ -1,5 +1,5 @@
 const kraken = require('kraken-api-wrapper')();
-var constants = require('./constants');
+var constants = require('../constants');
 const EXCHANGE_NAME = 'kraken';
 
 

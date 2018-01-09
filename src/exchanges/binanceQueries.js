@@ -4,6 +4,7 @@ const EXCHANGE_NAME = 'binance';
 var getBalancePromise = function (_wallet) {
 
 	return new Promise(function (resolve, reject) {
+
 		binance.options({
 			'APIKEY': _wallet.binancePublicKey,
 			'APISECRET': _wallet.binanceSecretKey
